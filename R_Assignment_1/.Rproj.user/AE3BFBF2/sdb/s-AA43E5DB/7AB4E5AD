@@ -1,0 +1,17 @@
+{
+    "contents" : "corr <- function(directory, threshold = 0) {\n    ## 'directory' is a character vector of length 1 indicating\n    ## the location of the CSV files\n    \n    ## 'threshold' is a numeric vector of length 1 indicating the\n    ## number of completely observed observations (on all\n    ## variables) required to compute the correlation between\n    ## nitrate and sulfate; the default is 0\n    \n    ## Return a numeric vector of correlations\n    makename<-function(c){\n        n<-as.character(c)\n        sl<-nchar(n)\n        name<-\"\"\n        if(sl == 1){\n            name<-\"00\"\n        }\n        if(sl == 2){\n            name<-\"0\"\n        }\n        name<-paste(directory,\"\\\\\",name,n,\".CSV\", sep = \"\")\n        name\n    }\n    \n    filesNamesVector<-function(fs){\n        i<-1\n        files<-vector(mode = \"character\",length = 0)\n        for(c in fs)\n        {\n            name<-makename(c)\n            files[i]=name\n            i<-i+1\n        }\n        files\n    }\n    #l<-length(id)\n    options(digits=4)\n    cmp<-complete(\"specdata\")\n    cmp<-subset(cmp, nobs > threshold)\n    if(nrow(cmp)==0)\n    {\n        vector(mode = \"numeric\", length = 0) \n    }\n    else{\n        files<-filesNamesVector(cmp$id)\n        \n        l<-length(files)\n        rv<-vector(\"numeric\")\n        for(i in 1:l){\n            df<-read.csv(files[[i]])\n            good <- complete.cases(df)\n            df<-df[good, ]\n            rv<-c(rv, cor(x = df$sulfate, y = df$nitrate))\n        }\n        rv\n    }\n}\n",
+    "created" : 1418677220195.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1435599965",
+    "id" : "7AB4E5AD",
+    "lastKnownWriteTime" : 1418683661,
+    "path" : "F:/RSource/Coursera/RProgramming/w2/Assignment1/corr.R",
+    "project_path" : "corr.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}

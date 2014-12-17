@@ -1,0 +1,17 @@
+{
+    "contents" : "pollutantmean <- function(directory = \"specdata\", pollutant, id = 1:332) {\n    ## 'directory' is a character vector of length 1 indicating\n    ## the location of the CSV files\n\n    ## 'pollutant' is a character vector of length 1 indicating\n    ## the name of the pollutant for which we will calculate the\n    ## mean; either \"sulfate\" or \"nitrate\".\n    \n    ## 'id' is an integer vector indicating the monitor ID numbers\n    ## to be used\n    \n    ## Return the mean of the pollutant across all monitors list\n    ## in the 'id' vector (ignoring NA values)\n    makename<-function(c){\n        n<-as.character(c)\n        sl<-nchar(n)\n        name<-\"\"\n        if(sl == 1){\n            name<-\"00\"\n        }\n        if(sl == 2){\n            name<-\"0\"\n        }\n        name<-paste(directory,\"\\\\\",name,n,\".CSV\", sep = \"\")\n        name\n    }\n    \n    filesNamesVector<-function(fs){\n        i<-1\n        files<-c(\"character\")\n        for(c in fs)\n        {\n            name<-makename(c)\n            files[i]=name\n            i<-i+1\n        }\n        files\n    }\n    \n    l<-length(id)\n    rv<-vector(\"numeric\")\n    files<-filesNamesVector(id)\n    for(i in 1:l){\n        df<-read.csv(files[[i]])\n        rv<-c(rv,df[[pollutant]])\n    }\n    bad <- is.na(rv)\n    rv<-rv[!bad]\n    mean(rv)\n}\n\n",
+    "created" : 1418661922658.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3272272759",
+    "id" : "3CB95EAD",
+    "lastKnownWriteTime" : 1418672613,
+    "path" : "F:/RSource/Coursera/RProgramming/w2/Assignment1/pollutantmean.R",
+    "project_path" : "pollutantmean.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "getSigTwi<-function(){\n    myapp = oauth_app(\"twitter\", key=\"S0ojmZVXiT1oDf3VjUgBRUDhr\",secret=\"Lsrr8yRBxmx6NniDI31TS9Ft0zc81uXX1QCZjXFzbTcpcxqA5y\")\n    sig = sign_oauth1.0(myapp, token = \"2497722505-NsIczHNB3drjEGE0jTP85TOXf3W2mGdVjdp6KUT\", token_secret = \"kiaKq6ZqqifbZjvUn4gEjp2WyrmgE0EKiIjPQWhUf5T55\")\n    sig\n}\ngetSigGit<-function(){\n    myapp = oauth_app(\"twitter\", key=\"a93230860c4f08b25f22\",secret=\"f4734aa09c48404024f0ee057a42f20525eceff6\")\n    sig = sign_oauth1.0(myapp, token = \"2497722505-NsIczHNB3drjEGE0jTP85TOXf3W2mGdVjdp6KUT\", token_secret = \"kiaKq6ZqqifbZjvUn4gEjp2WyrmgE0EKiIjPQWhUf5T55\")\n    sig\n}\n\n\nsig<-getSigTwi()\nhomeTL = GET(\"https://api.twitter.com/1.1/friends/ids.json\", sig)\njson1 = content(homeTL)\njson2 = jsonlite::fromJSON(toJSON(json1))\njson2[1,1]",
+    "created" : 1418760249201.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1342104926",
+    "id" : "5D0A8DCC",
+    "lastKnownWriteTime" : 1418767916,
+    "path" : "F:/RSource/Coursera/RProgramming/w2/Assignment1/TwiApi.R",
+    "project_path" : "TwiApi.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "getGitToken<-function(){\n    library(httr)\n    library(httpuv)\n    library(jsonlite)\n    # 1. Find OAuth settings for github:\n    #    http://developer.github.com/v3/oauth/\n    oauth_endpoints(\"github\")\n    \n    # 2. Register an application at https://github.com/settings/applications;\n    #    Use any URL you would like for the homepage URL (http://github.com is fine)\n    #    and http://localhost:1410 as the callback url\n    #\n    #    Insert your client ID and secret below - if secret is omitted, it will\n    #    look it up in the GITHUB_CONSUMER_SECRET environmental variable.\n    myapp <- oauth_app(\"github\", \"b2dd27377f5a5fb454de\",secret = \"d0b1201cdef4afd8af7f1d31f37dd13714650aa3\")\n    #,secret = \"e778c22c5c5bca6e427cde0c679960cae8c90316\"\n    #dcfebf6ac3abb876b5505c4a17352637101cb174\n    # 3. Get OAuth credentials\n    github_token <- oauth2.0_token(oauth_endpoints(\"github\"), myapp)\n    \n    # 4. Use API\n    gtoken <- config(token = github_token)\n    gtoken\n    \n    \n    # OR:\n    #req <- with_config(gtoken, GET(\"https://api.github.com/rate_limit\"))\n    #stop_for_status(req)\n    #content(req)\n}\ngtoken<-getGitToken()\n#http://localhost:2497/\nreq <- GET(\"https://api.github.com/users/jtleek/repos\", gtoken)\n#req <- GET(\"http://localhost:2497/\", gtoken)\nstop_for_status(req)\njson1 = content(req)\njson2 = jsonlite::fromJSON(toJSON(json1))\nj<-json2[[\"created_at\"]][5][[1]]\nj",
+    "created" : 1418767261611.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2139664278",
+    "id" : "69E283ED",
+    "lastKnownWriteTime" : 1418832790,
+    "path" : "F:/RSource/Coursera/RProgramming/w2/Assignment1/github.R",
+    "project_path" : "github.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

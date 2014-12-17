@@ -1,0 +1,17 @@
+{
+    "contents" : "#library(sqldf)\n#acs<-read.csv(\"data.csv\")\n#q1<-sqldf(\"select pwgtp1 from acs where AGEP < 50\")\n#q2<-sqldf(\"select distinct AGEP from acs\")\n#url <- \"http://biostat.jhsph.edu/~jleek/contact.html\"\n#con = url(\"http://biostat.jhsph.edu/~jleek/contact.html\")\n#htmlCode = readLines(con)\n#close(con)\n#h1<-nchar(htmlCode[10])\n#h2<-nchar(htmlCode[20])\n#h3<-nchar(htmlCode[30])\n#h4<-nchar(htmlCode[100])\ndata<-read.fwf(\"data.for\", skip = 4, widths = c(15,4,9,4,9,4,9,4,4))\ns<-sum(data[6])",
+    "created" : 1418832823676.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2071749295",
+    "id" : "D6182B8B",
+    "lastKnownWriteTime" : 1418845483,
+    "path" : "F:/RSource/Coursera/RProgramming/w2/Assignment1/Question2_3.R",
+    "project_path" : "Question2_3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}
